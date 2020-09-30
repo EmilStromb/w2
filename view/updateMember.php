@@ -1,6 +1,6 @@
 <?php
 
-class UpdateMemberForm{
+class UpdateMember{
 
   private $id;
   private $firstname;
@@ -16,20 +16,19 @@ class UpdateMemberForm{
   }
 
   public function show(){
-    return "
-    <form action='?action=updateMember' method='POST'>
+    return '
+    <form method="POST">
     <legend>First name
-      <input type='text' name='firstname' value='{$this->firstname}'>
+      <input type="text" name="firstname" value=' . $this->firstname . '>
     </legend>
     <legend>Last name
-      <input type='text' name='lastname' value='{$this->lastname}'>
+      <input type="text" name="lastname" value=' . $this->lastname . '>
     </legend>
     <legend>Personal identity number
-      <input type='text' name='personalNumber' value='{$this->$personalNumber}'>
+      <input type="text" name="personalNumber" value=' . $this->$personalNumber . '>
     </legend>
-    <input type='submit' name='UpdateMember'>
-    <a href='?action=deleteMember&id={$this->id}'>Delete member</a>
-    ";
+    <input type="submit" name="UpdateMember" value="Delete member"/>
+    ';
   }
 
 }
