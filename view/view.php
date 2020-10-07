@@ -14,6 +14,7 @@ class view {
             <title>Workshop 2</title>
           </head>
           <body>
+          <h1>Welcome to our boatclub</h1>
           <nav>
             <form method="post" > 
             <fieldset>
@@ -23,7 +24,7 @@ class view {
             </fieldset>
         </form>
           </nav>
-            <h1>Welcome to our boatclub</h1>
+            
             <div>
               ' . $body->show() . '
             </div>
