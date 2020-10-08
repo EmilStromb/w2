@@ -3,6 +3,7 @@
 class boat {
     private $type;
     private $length;
+    private $memberID;
 
 
     public function getBoatType() {
@@ -13,6 +14,16 @@ class boat {
         if ($type == "Sailboat" || $type == "Motorsailer" || $type == "kayak/Canoe" || $type == "Other") {
             $this->type = $type;
         }
+    }
+
+    public function getBoatMemberID() {
+        return $this->memberID;
+
+    }
+
+    public function setBoatMemberID($memberID) {
+        $this->memberID = $memberID;
+
     }
 
     public function getBoatLength() {

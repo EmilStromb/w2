@@ -13,7 +13,7 @@
         $m->setMemberName($name);
         $m->setPersonalNumber($personalNumber);
         $m->setMemberID($ID);
-        return $m;
-        echo $m->getMemberName();
-        echo $m->getPersonalNumber();
+        
+        // __sleep is called by serialize(). A sleep method will return an array of the values from the object. https://stackoverflow.com/questions/1442177/storing-objects-in-php-session
+        $_SESSION['member'] = serialize($m);
     }
