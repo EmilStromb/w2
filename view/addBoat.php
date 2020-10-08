@@ -20,9 +20,6 @@ class AddBoat{
       <input type="radio" name="' . self::$type . '" value="kayak/Canoe">Kayak/Canoe</input>
       <input type="radio" name="' . self::$type . '" value="Other">Other</input>
     </legend>
-    <legend>Personal identity number
-      <input type="text" name="' . self::$personalNumber . '">
-    </legend>
     <input type="submit" name="' . self::$sendbtn . '" value="Send">
     ';
   }

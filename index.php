@@ -1,5 +1,5 @@
 <?php
-require_once('model/member.php');
+
 require_once('model/boat.php');
 require_once("view/view.php");
 require_once("view/addMember.php");
@@ -7,18 +7,23 @@ require_once("view/addBoat.php");
 require_once("controller/memberController.php");
 require_once("controller/boatController.php");
 require_once("view/emptyView.php");
+require_once('model/member.php');
 
+session_start();
+
+$m = new member();
 $am = new addMember();
 $ab = new addBoat();
 $v = new view();
-$m = new member();
 $b = new boat();
 $ev = new emptyView();
 
-// If send button is pressed in new member.
+// If addMember  send button is pressed.
 if (isset($_POST['addMember::button'])) {
-    addMember();
+    addMember($m);
     $v->render($ab);
+    // __sleep is called by serialize(). A sleep method will return an array of the values from the object. https://stackoverflow.com/questions/1442177/storing-objects-in-php-session
+    $_SESSION['member'] = serialize($m);
 } else {
 // Nav
 if (isset($_POST['view::NewMember'])) {
@@ -26,4 +31,10 @@ if (isset($_POST['view::NewMember'])) {
 } else {
     $v->render($ev);
 }
+}
+// If addboat send button is pressed.
+if (isset($_POST['AddBoat::button'])) {
+    // __wakeup is called by unserialize(). A wakeup method should take the unserialized values.
+    $member = unserialize($_SESSION['member']);
+    addBoat($member);
 }
