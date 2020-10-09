@@ -25,9 +25,12 @@
         fwrite($file, $m->getPersonalNumber() . ", ");
         fwrite($file, $m->getMemberID() . "\n");
         fclose($file);
+
+        /* will use later to read line by line.
         foreach (readLines($file) as $line) {
             echo $line;
-        }
+        }*/ 
+        
     }
     // Function to Read txt file line by line help from https://stackoverflow.com/questions/13246597/how-to-read-a-large-file-line-by-line
     function readLines($file) {

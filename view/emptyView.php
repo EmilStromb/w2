@@ -1,6 +1,6 @@
 <?php
 
-class emptyView{
+class EmptyView{
   public function show(){
     return '';
   }

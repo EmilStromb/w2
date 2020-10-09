@@ -2,7 +2,7 @@
 require_once("view/addMember.php");
 
 
-class view {
+class View {
   private static $addMember = 'view::NewMember';
   private static $verboseList = 'view::VerboseList';
   private static $compactList = 'view::CompactList';

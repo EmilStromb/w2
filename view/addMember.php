@@ -1,6 +1,6 @@
 <?php
 
-class addMember{
+class AddMember{
   private static $sendbtn = "addMember::button";
   private static $name = "addMember::fullName";
   private static $personalNumber = "addMember::personalNumber";

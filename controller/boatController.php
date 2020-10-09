@@ -12,6 +12,14 @@
         $b->setBoatLength($length);
         $b->setBoatmemberID($m->getMemberID());
 
+           // TODO:
+        // change this to a new function
+        $file = fopen('boats.txt', 'a');
+        fwrite($file, $b->getBoatType() . ", ");
+        fwrite($file, $b->getBoatLength() . ", ");
+        fwrite($file, $m->getMemberID() . "\n");
+        fclose($file);
+
         // __sleep is called by serialize(). A sleep method will return an array of the values from the object. https://stackoverflow.com/questions/1442177/storing-objects-in-php-session
         $_SESSION['boat'] = serialize($b);
     }

@@ -11,12 +11,12 @@ require_once('model/member.php');
 
 session_start();
 
-$m = new member();
-$am = new addMember();
-$ab = new addBoat();
-$v = new view();
-$b = new boat();
-$ev = new emptyView();
+$m = new Member();
+$am = new AddMember();
+$ab = new AddBoat();
+$v = new View();
+$b = new Boat();
+$ev = new EmptyView();
 
 // If addMember  send button is pressed.
 if (isset($_POST['addMember::button'])) {

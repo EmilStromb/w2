@@ -2,15 +2,14 @@
 
 class UpdateMember{
 
-  private $id;
+  private $ID;
   private $firstname;
   private $lastname;
   private $personalNumber;
 
-  public function __construct($id, $firstname, $lastname, $personalNumber){
-    $this->id = $id;
-    $this->firstname = $firstname;
-    $this->lastname = $lastname;
+  public function __construct($ID, $fullName, $personalNumber){
+    $this->ID = $ID;
+    $this->fullName = $fullName;
     $this->personalNumber = $personalNumber;
     $this->boats = $boats;
   }
@@ -18,11 +17,8 @@ class UpdateMember{
   public function show(){
     return '
     <form method="POST">
-    <legend>First name
-      <input type="text" name="firstname" value=' . $this->firstname . '>
-    </legend>
-    <legend>Last name
-      <input type="text" name="lastname" value=' . $this->lastname . '>
+    <legend>Full name
+      <input type="text" name="firstname" value=' . $this->fullName . '>
     </legend>
     <legend>Personal identity number
       <input type="text" name="personalNumber" value=' . $this->$personalNumber . '>

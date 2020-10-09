@@ -1,6 +1,6 @@
 <?php
 
-class boat {
+class Boat {
     private $type;
     private $length;
     private $memberID;
