@@ -3,7 +3,6 @@
     function addBoat(boat $b) {
         // __wakeup is called by unserialize(). A wakeup method should take the unserialized values.
         $m = unserialize($_SESSION['member']);
-        echo $m->getMemberID();
         // Get boat type and length.
         $type =  $_POST["AddBoat::type"];
         $length =  $_POST["AddBoat::length"];
