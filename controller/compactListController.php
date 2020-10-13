@@ -9,14 +9,15 @@ class CompactController {
         $vlc = new VerboseController();
 
         $myHTML = "";
-        $myHTML = $vlc->renderMemberInfo($myHTML);
         $count = 0;
         foreach (file('boats.txt') as $line) {
             $data = explode(',', $line);
             $count ++;
         }
-        $boatAmountRender = new renderBoat($data[0], $data[1], $data[2]);
+        $boatAmountRender = new RenderBoat($data[0], $data[1], $data[2]);
         $myHTML .= $boatAmountRender->renderAmout($count);
+        $myHTML = $vlc->renderMemberInfo($myHTML);
+        
         // return to be shown.
         return $myHTML;
     }

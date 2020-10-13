@@ -2,10 +2,9 @@
 
 class AddBoat{
 
-  private static $sendbtn = "AddBoat::button";
+  private static $sendBtn = "AddBoat::button";
   private static $type = "AddBoat::type";
   private static $length = "AddBoat::length";
-  private static $personalNumber = "AddBoat::personalNumber";
 
   public function show(){
     return '
@@ -20,7 +19,7 @@ class AddBoat{
       <input type="radio" name="' . self::$type . '" value="kayak/Canoe">Kayak/Canoe</input>
       <input type="radio" name="' . self::$type . '" value="Other">Other</input>
     </legend>
-    <input type="submit" name="' . self::$sendbtn . '" value="Send">
-    ';
+    <input type="submit" name="' . self::$sendBtn . '" value="Send">
+    </form>s';
   }
 }

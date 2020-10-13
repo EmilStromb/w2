@@ -1,12 +1,19 @@
 <?php
 
-class renderBoat{
+class RenderBoat{
 
   private $ID;
   private $length;
   private $type;
+  private static $myType = "RenderBoat::type";
+  private static $myLength = "RenderBoat::length";
+  private static $myID = "RenderBoat::ID";
+  private static $changeBtn = "RenderBoat::change";
 
-  public function __construct($type,$length , $ID){
+  
+
+
+  public function __construct($type, $length , $ID){
     $this->ID = $ID;
     $this->length = $length;
     $this->type = $type;
@@ -17,38 +24,39 @@ class renderBoat{
     return '
     <form method="POST">
     <legend>length
-      <input type="text" name="firstname" value=' . $this->length . '>
+      <input type="text"  value=' . $this->length . '>
     </legend>
     <legend>type
-      <input type="text" name="personalNumber" value=' . $this->$type . '>
+      <input type="text"  value=' . $this->type . '>
     </legend>
     <legend>Member ID
-      <input type="text" name="ID" value=' . $this->$ID . '>
+      <input type="text"  value=' . $this->ID . '>
     </legend>
+    <input type="submit" name="UpdateMember" value="update member"/>
     <input type="submit" name="UpdateMember" value="Delete member"/>
-    ';
+    </form>';
   }
   // For lists.
-  public function render(){
+  public function render(){ // fix here to get info to change boat info.
     return '
     <hr>
     <form method="POST">
     <legend>length:
-      <p>' . $this->length . '<p>
+      <input name="' . self::$myLength . '" value="' . $this->length . '" readonly/>
     </legend>
     <legend>type:
-      <p>' . $this->type . '<p>
-    </legend>
+    <input name="' . self::$myType . '" value="' . $this->type . '" readonly/>
+      </legend>
     <legend>member ID:
-      <p>' . $this->ID . '<p>
+      <input name="' . self::$myID . '" value="' . $this->ID . '" readonly/>
     </legend>
-    <input type="submit" name="UpdateMember" value="change"/>
-    ';
+    <input type="submit" name="' . self::$changeBtn . '" value="update"/>
+    </form>';
   }
   public function renderAmout($amount) {
     return '
     <hr>
-    <h2>Amount of boats: </h2>
+    <h3>Amount of boats: </h3>
     <p> ' . $amount . ' <p>
     ';
   }

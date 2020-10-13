@@ -1,10 +1,15 @@
 <?php
 
-class renderMember{
+class RenderMember{
 
   private $ID;
   private $fullName;
   private $personalNumber;
+  private static $changeBtn = "RenderMember::change";
+  private static $myName = "RenderMember::fullName";
+  private static $myPersonalNumber = "RenderMember::personalNumber";
+  private static $myID = "RenderMember::ID";
+
 
   public function __construct($fullName, $personalNumber, $ID){
     $this->ID = $ID;
@@ -17,32 +22,33 @@ class renderMember{
     return '
     <form method="POST">
     <legend>Full name
-      <input type="text" name="firstname" value=' . $this->fullName . '>
+      <input type="text" value=' . $this->fullName . '>
     </legend>
     <legend>Personal identity number
-      <input type="text" name="personalNumber" value=' . $this->$personalNumber . '>
+      <input type="text"  value=' . $this->personalNumber . '>
     </legend>
     <legend>Member ID
-      <input type="text" name="ID" value=' . $this->$ID . '>
+      <input type="text"  value=' . $this->ID . '>
     </legend>
+    <input type="submit" name="UpdateMember" value="update member"/>
     <input type="submit" name="UpdateMember" value="Delete member"/>
-    ';
+    </form>';
   }
   // For lists.
-  public function render(){
+  public function render(){  // fix here to get info to change member info.
     return '
     <hr>
     <form method="POST">
     <legend>Full name:
-      <p>' . $this->fullName . '<p>
+      <input name="' . self::$myName . '" value="' . $this->fullName . '" readonly/>
     </legend>
     <legend>Personal identity number:
-      <p>' . $this->personalNumber . '<p>
+      <input name="' . self::$myPersonalNumber . '" value="' . $this->personalNumber . '" readonly/>
     </legend>
     <legend>member ID:
-      <p>' . $this->ID . '<p>
+      <input name="' . self::$myID . '" value="' . $this->ID . '" readonly/>
     </legend>
-    <input type="submit" name="UpdateMember" value="change"/>
-    ';
+    <input type="submit" name="' . self::$changeBtn . '" value="update"/>
+    </form>';
   }
 }

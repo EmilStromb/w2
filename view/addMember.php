@@ -1,7 +1,7 @@
 <?php
 
 class AddMember{
-  private static $sendbtn = "addMember::button";
+  private static $sendBtn = "addMember::button";
   private static $name = "addMember::fullName";
   private static $personalNumber = "addMember::personalNumber";
 
@@ -15,7 +15,7 @@ class AddMember{
     <legend>Personal identity number
       <input type="text" name="' . self::$personalNumber . '">
     </legend>
-    <input type="submit" name="' . self::$sendbtn . '" value="Send">
-    ';
+    <input type="submit" name="' . self::$sendBtn . '" value="Send">
+    </form>';
   }
 }
