@@ -19,10 +19,13 @@ class NavController {
     // Nav
         if (isset($_POST['view::NewMember'])) {
             $v->render($am);
+            // Nav
         } else if (isset($_POST['view::VerboseList'])) {
             $v->render($vlc);
+            // Nav
         } else if (isset($_POST['view::CompactList'])) {
             $v->render($clc);
+             // if change button is pressed!
         } else if (isset($_POST['RenderBoat::change'])) {
             // get values.
             $type =  $_POST["RenderBoat::type"];
@@ -30,6 +33,7 @@ class NavController {
             $ID =  $_POST["RenderBoat::ID"];
             $rb = new RenderBoat($type, $length, $ID);
             $v->render($rb);
+             // if change button is pressed!
         } else if (isset($_POST['RenderMember::change'])) {
             // get values.
             $fullName =  $_POST["RenderMember::fullName"];
@@ -38,10 +42,12 @@ class NavController {
             $rm = new RenderMember($fullName, $personalNumber, $ID);
             $v->render($rm);
 
+            // if update/delete button is pressed!
         } else if (isset($_POST['RenderMember::update'])) {
             if($_POST['RenderMember::update'] == "Update member") {
                 $v->render($ev);
                 $vlc->removeFromFile('members.txt' ,'RenderMember::ID');
+                $mc->updateMember($_POST['RenderMember::fullName'], $_POST['RenderMember::personalNumber'], $_POST['RenderMember::ID']);
             } else {
                 $v->render($ev);
                 $vlc->removeFromFile('members.txt' ,'RenderMember::ID');
@@ -53,7 +59,7 @@ class NavController {
             if($_POST['RenderBoat::update'] == "Update boat") {
                 $v->render($ev);
                 $vlc->removeFromFile('boats.txt' ,'RenderBoat::ID');
-
+                $bc->updateBoat($_POST['RenderBoat::type'], $_POST['RenderBoat::length'], $_POST['RenderBoat::ID']);
             } else {
                 $v->render($ev);
                 $vlc->removeFromFile('boats.txt' ,'RenderBoat::ID');

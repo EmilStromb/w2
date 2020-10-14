@@ -1,4 +1,5 @@
 <?php
+require_once('model/boat.php');
 
 class BoatController {
 
@@ -15,18 +16,28 @@ class BoatController {
         $b->setBoatLength($length);
         $b->setBoatmemberID($m->getMemberID());
 
-        $this->saveToFileBoat($b, $m);
+        $this->saveToFileBoat($b);
 
         // __sleep is called by serialize(). A sleep method will return an array of the values from the object. https://stackoverflow.com/questions/1442177/storing-objects-in-php-session
         $_SESSION['boat'] = serialize($b);
     }
 
+    public function updateBoat($type, $length, $ID) {
+        $b = new boat();
+
+        $b->setBoatType($type);
+        $b->setBoatLength($length);
+        $b->setBoatmemberID($ID);
+
+        $this->saveToFileBoat($b);
+    }
+
     // Save the info to Boats.txt
-    private function saveToFileBoat(boat $b, member $m) {
+    private function saveToFileBoat(boat $b) {
         $file = fopen('boats.txt', 'a');
         fwrite($file, $b->getBoatType() . ",");
         fwrite($file, $b->getBoatLength() . ",");
-        fwrite($file, $m->getMemberID() . "\n");
+        fwrite($file, $b->getBoatMemberID() . "\n");
         fclose($file);
     }
 }

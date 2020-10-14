@@ -33,6 +33,7 @@ class VerboseController {
         $lineCount = 0;
         foreach (file($file) as $line) {
             $data = explode(',', $line);
+            // Check so the ID of user/boat matches
             if ($data[2] === $_POST[$ID] . "\n")  {
                 // Read the whole file
                 $file_out = file($file); 

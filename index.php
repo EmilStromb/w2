@@ -1,6 +1,7 @@
 <?php
 
 require_once('model/boat.php');
+require_once('model/member.php');
 require_once("view/view.php");
 require_once("view/addMember.php");
 require_once("view/addBoat.php");
@@ -12,7 +13,6 @@ require_once("controller/compactListController.php");
 require_once("controller/navigationController.php");
 require_once("controller/memberController.php");
 require_once("controller/boatController.php");
-require_once('model/member.php');
 
 session_start();
 

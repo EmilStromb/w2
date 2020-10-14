@@ -1,4 +1,5 @@
 <?php
+require_once('model/member.php');
 
 class MemberController {
 
@@ -21,6 +22,16 @@ class MemberController {
         $_SESSION['member'] = serialize($m);
 
         $this->saveTofile($m);   
+    }
+
+    public function updateMember($name, $personalNumber, $ID) {
+        $m = new member();
+
+        $m->setMemberName($name);
+        $m->setPersonalNumber($personalNumber);
+        $m->setMemberID($ID);
+
+        $this->saveTofile($m);
     }
 
     // Save the info to members.txt
