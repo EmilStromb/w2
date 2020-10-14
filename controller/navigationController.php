@@ -4,7 +4,7 @@ require_once("view/renderMember.php");
 
 class NavController {
     
-    public function showView(View $v,Member $m,AddMember $am,AddBoat $ab,Boat $b,EmptyView $ev,VerboseController $vlc, CompactController $clc) {
+    public function showView(View $v,Member $m,AddMember $am,AddBoat $ab,Boat $b,EmptyView $ev,VerboseController $vlc, CompactController $clc, BoatController $bc, MemberController $mc) {
     // If addMember 'send' button is pressed.
     if (isset($_POST['addMember::button'])) {
     // check so there is content in inputs.
@@ -12,7 +12,7 @@ class NavController {
             $v->render($am);
         } else {
             // function addMember in controller.
-            addMember($m);
+            $mc->addMember($m);
             $v->render($ab);
         }
     } else {
@@ -31,12 +31,35 @@ class NavController {
             $rb = new RenderBoat($type, $length, $ID);
             $v->render($rb);
         } else if (isset($_POST['RenderMember::change'])) {
+            // get values.
             $fullName =  $_POST["RenderMember::fullName"];
             $personalNumber =  $_POST["RenderMember::personalNumber"];
             $ID =  $_POST["RenderMember::ID"];
             $rm = new RenderMember($fullName, $personalNumber, $ID);
             $v->render($rm);
 
+        } else if (isset($_POST['RenderMember::update'])) {
+            if($_POST['RenderMember::update'] == "Update member") {
+                $v->render($ev);
+                $vlc->removeFromFile('members.txt' ,'RenderMember::ID');
+            } else {
+                $v->render($ev);
+                $vlc->removeFromFile('members.txt' ,'RenderMember::ID');
+                echo "successfully deleted member!";
+                // delete member
+            }
+
+        } else if (isset($_POST['RenderBoat::update'])) {
+            if($_POST['RenderBoat::update'] == "Update boat") {
+                $v->render($ev);
+                $vlc->removeFromFile('boats.txt' ,'RenderBoat::ID');
+
+            } else {
+                $v->render($ev);
+                $vlc->removeFromFile('boats.txt' ,'RenderBoat::ID');
+                echo "successfully deleted boat!";
+                // delete member
+            }
         } else {
             $v->render($ev);
         }
@@ -44,7 +67,7 @@ class NavController {
     // If addboat 'send' button is pressed.
         if (isset($_POST['AddBoat::button'])) {
             // function addBoat in controller.
-            addBoat($b);
+            $bc->addBoat($b);
         }
     }
 }

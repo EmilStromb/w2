@@ -18,6 +18,7 @@ class VerboseController {
         return $myHTML;
     }
 
+    // This renders the member info, association -> compactListController.php
     public function renderMemberInfo($myHTML) {
         // add the html for each member.
         foreach (file('members.txt') as $line) {
@@ -26,6 +27,25 @@ class VerboseController {
             $myHTML .= $theRender->render();
         }
         return $myHTML;
+    }
+
+    public function removeFromFile($file, $ID) {
+        $lineCount = 0;
+        foreach (file($file) as $line) {
+            $data = explode(',', $line);
+            if ($data[2] === $_POST[$ID] . "\n")  {
+                // Read the whole file
+                $file_out = file($file); 
+                //Delete the recorded line
+                unset($file_out[$lineCount]);
+                //Recorded in a file
+                file_put_contents($file, implode("", $file_out));
+                // echo "successfully updated member!";
+                return;
+            }
+            $lineCount ++;
+            // !TODO: add updated member to file.
+        }
     }
 }
 

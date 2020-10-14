@@ -9,6 +9,8 @@ class RenderBoat{
   private static $myLength = "RenderBoat::length";
   private static $myID = "RenderBoat::ID";
   private static $changeBtn = "RenderBoat::change";
+  private static $update = "RenderBoat::update";
+
 
   
 
@@ -23,17 +25,17 @@ class RenderBoat{
   public function show(){
     return '
     <form method="POST">
-    <legend>length
-      <input type="text"  value=' . $this->length . '>
+    <legend>length:
+      <input name="' . self::$myLength . '" value="' . $this->length . '"/>
     </legend>
-    <legend>type
-      <input type="text"  value=' . $this->type . '>
+    <legend>type:
+    <input name="' . self::$myType . '" value="' . $this->type . '"/>
+      </legend>
+    <legend>member ID:
+      <input name="' . self::$myID . '" value="' . $this->ID . '" readonly/>
     </legend>
-    <legend>Member ID
-      <input type="text"  value=' . $this->ID . '>
-    </legend>
-    <input type="submit" name="UpdateMember" value="update member"/>
-    <input type="submit" name="UpdateMember" value="Delete member"/>
+    <input type="submit" name="' . self::$update . '" value="Update boat"/>
+    <input type="submit" name="' . self::$update . '" value="Delete boat"/>
     </form>';
   }
   // For lists.

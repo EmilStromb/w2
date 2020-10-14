@@ -10,6 +10,8 @@ require_once("controller/boatController.php");
 require_once("controller/verboseListController.php");
 require_once("controller/compactListController.php");
 require_once("controller/navigationController.php");
+require_once("controller/memberController.php");
+require_once("controller/boatController.php");
 require_once('model/member.php');
 
 session_start();
@@ -22,8 +24,9 @@ $b = new Boat();
 $ev = new EmptyView();
 $vlc = new VerboseController();
 $clc = new CompactController();
-
+$mc = new MemberController();
+$bc = new BoatController();
 // Load in nav
-$nc = new NavController($v);
+$nc = new NavController();
 
-$nc->showView($v, $m, $am, $ab, $b, $ev, $vlc, $clc);
+$nc->showView($v, $m, $am, $ab, $b, $ev, $vlc, $clc, $bc, $mc);
