@@ -34,18 +34,16 @@ class VerboseController {
         foreach (file($file) as $line) {
             $data = explode(',', $line);
             // Check so the ID of user/boat matches
-            if ($data[2] === $_POST[$ID] . "\n")  {
+            if ($data[2] === $ID . "\n")  {
                 // Read the whole file
                 $file_out = file($file); 
                 //Delete the recorded line
                 unset($file_out[$lineCount]);
                 //Recorded in a file
                 file_put_contents($file, implode("", $file_out));
-                // echo "successfully updated member!";
                 return;
             }
             $lineCount ++;
-            // !TODO: add updated member to file.
         }
     }
 }

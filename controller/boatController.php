@@ -4,12 +4,12 @@ require_once('model/boat.php');
 class BoatController {
 
 // Change to class file!
-    public function addBoat(boat $b) {
+    public function addBoat(boat $b, addBoat $ab) {
         // __wakeup is called by unserialize(). A wakeup method should take the unserialized values.
         $m = unserialize($_SESSION['member']);
         // Get boat type and length.
-        $type =  $_POST["AddBoat::type"];
-        $length =  $_POST["AddBoat::length"];
+        $type =  $ab->getBoatType();
+        $length =  $ab->getBoatLength();
                 
         // Set type and lenght on boat.
         $b->setBoatType($type);

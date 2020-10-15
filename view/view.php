@@ -3,9 +3,9 @@ require_once("view/addMember.php");
 
 
 class View {
-  private static $addMember = 'view::NewMember';
-  private static $verboseList = 'view::VerboseList';
-  private static $compactList = 'view::CompactList';
+  private $addMember = 'view::NewMember';
+  private $verboseList = 'view::VerboseList';
+  private $compactList = 'view::CompactList';
   public function render($body) {
       echo '<!DOCTYPE html>
         <html>
@@ -18,9 +18,9 @@ class View {
           <nav>
             <form method="post" > 
             <fieldset>
-                <input type="submit" name="' . self::$verboseList . '" value="Verbose list" />
-                <input type="submit" name="' . self::$compactList . '" value="Compact list" />
-                <input type="submit" name="' . self::$addMember . '" value="New member" />
+                <input type="submit" name="' . $this->verboseList . '" value="Verbose list" />
+                <input type="submit" name="' . $this->compactList . '" value="Compact list" />
+                <input type="submit" name="' . $this->addMember . '" value="New member" />
             </fieldset>
         </form>
           </nav>
@@ -31,5 +31,14 @@ class View {
            </body>
         </html>
       ';
+    }
+    public function getMemberSendBtn() {
+      return isset($_POST[$this->addMember]);
+    }
+    public function getVerboseListSendBtn() {
+      return isset($_POST[$this->verboseList]);
+    }
+    public function getCompactListSendBtn() {
+      return isset($_POST[$this->compactList]);
     }
 }

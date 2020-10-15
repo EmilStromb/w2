@@ -2,24 +2,36 @@
 
 class AddBoat{
 
-  private static $sendBtn = "AddBoat::button";
-  private static $type = "AddBoat::type";
-  private static $length = "AddBoat::length";
+  private $submitBtn = "AddBoat::submit";
+  private $type = "AddBoat::type";
+  private $length = "AddBoat::length";
 
   public function show(){
     return '
     <h3>Add a boat<h3>
-    <form action="?action=addBoat" method="POST">
+    <form method="POST">
     <legend>Length
-      <input type="text" name="' . self::$length . '" size=3>
+      <input type="text" name="' . $this->length . '" size=3>
     </legend>
     <legend>Type
-      <input type="radio" name="' . self::$type . '" value="Sailboat">Sailboat</input>
-      <input type="radio" name="' . self::$type . '" value="Motorsailer">Motorsailer</input>
-      <input type="radio" name="' . self::$type . '" value="kayak/Canoe">Kayak/Canoe</input>
-      <input type="radio" name="' . self::$type . '" value="Other">Other</input>
+      <input type="radio" name="' . $this->type . '" value="Sailboat">Sailboat</input>
+      <input type="radio" name="' . $this->type . '" value="Motorsailer">Motorsailer</input>
+      <input type="radio" name="' . $this->type . '" value="kayak/Canoe">Kayak/Canoe</input>
+      <input type="radio" name="' . $this->type . '" value="Other">Other</input>
     </legend>
-    <input type="submit" name="' . self::$sendBtn . '" value="Send">
+    <input type="submit" name="' . $this->submitBtn . '" value="Send">
     </form>s';
+  }
+
+  public function getBoatLength() {
+    return $_POST[$this->length];
+  }
+
+  public function getBoatType() {
+    return $_POST[$this->type];
+  }
+
+  public function getSendBtn() {
+    return isset($_POST[$this->submitBtn]);
   }
 }

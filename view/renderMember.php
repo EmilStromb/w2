@@ -5,11 +5,11 @@ class RenderMember{
   private $ID;
   private $fullName;
   private $personalNumber;
-  private static $changeBtn = "RenderMember::change";
-  private static $update = "RenderMember::update";
-  private static $myName = "RenderMember::fullName";
-  private static $myPersonalNumber = "RenderMember::personalNumber";
-  private static $myID = "RenderMember::ID";
+  private $changeBtn = "RenderMember::change";
+  private $update = "RenderMember::update";
+  private $myName = "RenderMember::fullName";
+  private $myPersonalNumber = "RenderMember::personalNumber";
+  private $myID = "RenderMember::ID";
 
 
   public function __construct($fullName, $personalNumber, $ID){
@@ -23,16 +23,16 @@ class RenderMember{
     return '
     <form method="POST">
     <legend>Full name:
-      <input name="' . self::$myName . '" value="' . $this->fullName . '" />
+      <input name="' . $this->myName . '" value="' . $this->fullName . '" />
     </legend>
     <legend>Personal identity number:
-      <input name="' . self::$myPersonalNumber . '" value="' . $this->personalNumber . '" />
+      <input name="' . $this->myPersonalNumber . '" value="' . $this->personalNumber . '" />
     </legend>
     <legend>member ID:
-      <input name="' . self::$myID . '" value="' . $this->ID . '" readonly/>
+      <input name="' . $this->myID . '" value="' . $this->ID . '" readonly/>
     </legend>
-    <input type="submit" name="' . self::$update . '" value="Update member"/>
-    <input type="submit" name="' . self::$update . '" value="Delete member"/>
+    <input type="submit" name="' . $this->update . '" value="Update member"/>
+    <input type="submit" name="' . $this->update . '" value="Delete member"/>
     </form>';
   }
   // For lists.
@@ -41,15 +41,33 @@ class RenderMember{
     <hr>
     <form method="POST">
     <legend>Full name:
-      <input name="' . self::$myName . '" value="' . $this->fullName . '" readonly/>
+      <input name="' . $this->myName . '" value="' . $this->fullName . '" readonly/>
     </legend>
     <legend>Personal identity number:
-      <input name="' . self::$myPersonalNumber . '" value="' . $this->personalNumber . '" readonly/>
+      <input name="' . $this->myPersonalNumber . '" value="' . $this->personalNumber . '" readonly/>
     </legend>
     <legend>member ID:
-      <input name="' . self::$myID . '" value="' . $this->ID . '" readonly/>
+      <input name="' . $this->myID . '" value="' . $this->ID . '" readonly/>
     </legend>
-    <input type="submit" name="' . self::$changeBtn . '" value="update"/>
+    <input type="submit" name="' . $this->changeBtn . '" value="update"/>
     </form>';
+  }
+  public function getID() {
+    return $_POST[$this->myID];
+  }
+  public function getPersonalNumber() {
+    return $_POST[$this->myPersonalNumber];
+  }
+  public function getName() {
+    return $_POST[$this->myName];
+  }
+  public function getSendBtn() {
+    return isset($_POST[$this->changeBtn]);
+  }
+  public function getUpdateSendBtn() {
+    return isset($_POST[$this->update]);
+  }
+  public function getUpdateBtnValue() {
+    return $_POST[$this->update];
   }
 }

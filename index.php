@@ -2,6 +2,8 @@
 
 require_once('model/boat.php');
 require_once('model/member.php');
+require_once("view/renderBoat.php");
+require_once("view/renderMember.php");
 require_once("view/view.php");
 require_once("view/addMember.php");
 require_once("view/addBoat.php");
@@ -22,6 +24,8 @@ $ab = new AddBoat();
 $v = new View();
 $b = new Boat();
 $ev = new EmptyView();
+$rb = new RenderBoat($ev, $ev, $ev);
+$rm = new RenderMember($ev, $ev, $ev);
 $vlc = new VerboseController();
 $clc = new CompactController();
 $mc = new MemberController();
@@ -29,4 +33,4 @@ $bc = new BoatController();
 // Load in nav
 $nc = new NavController();
 
-$nc->showView($v, $m, $am, $ab, $b, $ev, $vlc, $clc, $bc, $mc);
+$nc->showView($v, $m, $am, $ab, $b, $ev, $vlc, $clc, $bc, $mc, $rb, $rm);

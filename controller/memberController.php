@@ -1,13 +1,14 @@
 <?php
 require_once('model/member.php');
 
+
 class MemberController {
 
 // Change to class file!
-    public function addMember(member $m) {
+    public function addMember(member $m, AddMember $am) {
         // Get posted name and personalnumber.
-        $name =  $_POST["addMember::fullName"];
-        $personalNumber = $_POST["addMember::personalNumber"];
+        $name =  $am->getFullName();
+        $personalNumber = $am->getPersonalNumber();
 
         // Get random and unique ID.
         $bytes = random_bytes(5);
