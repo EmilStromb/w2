@@ -32,13 +32,13 @@ class View {
         </html>
       ';
     }
-    public function getMemberSendBtn() {
+    public function getMemberBtn() {
       return isset($_POST[$this->addMember]);
     }
-    public function getVerboseListSendBtn() {
+    public function getVerboseListBtn() {
       return isset($_POST[$this->verboseList]);
     }
-    public function getCompactListSendBtn() {
+    public function getCompactListBtn() {
       return isset($_POST[$this->compactList]);
     }
 }

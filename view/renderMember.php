@@ -6,7 +6,7 @@ class RenderMember{
   private $fullName;
   private $personalNumber;
   private $changeBtn = "RenderMember::change";
-  private $update = "RenderMember::update";
+  private $updateBtn = "RenderMember::update";
   private $myName = "RenderMember::fullName";
   private $myPersonalNumber = "RenderMember::personalNumber";
   private $myID = "RenderMember::ID";
@@ -65,9 +65,9 @@ class RenderMember{
     return isset($_POST[$this->changeBtn]);
   }
   public function getUpdateSendBtn() {
-    return isset($_POST[$this->update]);
+    return isset($_POST[$this->updateBtn]);
   }
   public function getUpdateBtnValue() {
-    return $_POST[$this->update];
+    return $_POST[$this->updateBtn];
   }
 }

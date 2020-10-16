@@ -18,7 +18,6 @@ class VerboseController {
         return $myHTML;
     }
 
-    // This renders the member info, association -> compactListController.php
     public function renderMemberInfo($myHTML) {
         // add the html for each member.
         foreach (file('members.txt') as $line) {

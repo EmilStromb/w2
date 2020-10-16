@@ -9,7 +9,7 @@ class RenderBoat{
   private $myLength = "RenderBoat::length";
   private $myID = "RenderBoat::ID";
   private $changeBtn = "RenderBoat::change";
-  private $update = "RenderBoat::update";
+  private $updateBtn = "RenderBoat::update";
 
 
   
@@ -75,9 +75,9 @@ class RenderBoat{
     return isset($_POST[$this->changeBtn]);
   }
   public function getUpdateSendBtn() {
-    return isset($_POST[$this->update]);
+    return isset($_POST[$this->updateBtn]);
   }
   public function getUpdateBtnValue() {
-    return $_POST[$this->update];
+    return $_POST[$this->updateBtn];
   }
 }

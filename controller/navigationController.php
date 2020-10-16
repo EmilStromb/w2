@@ -23,13 +23,13 @@ class NavController {
         $v->render($ev);
     } else {
     // Nav
-        if ($v->getMemberSendBtn()) {
+        if ($v->getMemberBtn()) {
             $v->render($am);
             // Nav
-        } else if ($v->getVerboseListSendBtn()) {
+        } else if ($v->getVerboseListBtn()) {
             $v->render($vlc);
             // Nav
-        } else if ($v->getCompactListSendBtn()) {
+        } else if ($v->getCompactListBtn()) {
             $v->render($clc);
              // if change button is pressed!
         } else if ($rb->getSendBtn()) {
