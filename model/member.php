@@ -6,6 +6,12 @@ class Member {
     private $personalNumber;
     private $memberID;
 
+    public function Set($name, $personalNumber, $memberID) {
+        $this->name = $name;
+        $this->personalNumber = $personalNumber;
+        $this->memberID = $memberID;
+    }
+
     public function getMemberName() {
         return $this->name;
     }
@@ -26,7 +32,7 @@ class Member {
         return $this->memberID;
     }
 
-    public function setMemberID($id) {
-        $this->memberID = $id;
+    public function setMemberID($memeberID) {
+        $this->memberID = $memberID;
     }
 }

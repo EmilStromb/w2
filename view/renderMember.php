@@ -12,10 +12,10 @@ class RenderMember{
   private $myID = "RenderMember::ID";
 
 
-  public function __construct($fullName, $personalNumber, $ID){
-    $this->ID = $ID;
-    $this->fullName = $fullName;
-    $this->personalNumber = $personalNumber;
+  public function __construct(member $m){
+    $this->ID = $m->getMemberID();
+    $this->fullName = $m->getMemberName();
+    $this->personalNumber = $m->getPersonalNumber();
   }
 
   // Update member form
@@ -31,12 +31,12 @@ class RenderMember{
     <legend>member ID:
       <input name="' . $this->myID . '" value="' . $this->ID . '" readonly/>
     </legend>
-    <input type="submit" name="' . $this->update . '" value="Update member"/>
-    <input type="submit" name="' . $this->update . '" value="Delete member"/>
+    <input type="submit" name="' . $this->updateBtn . '" value="Update member"/>
+    <input type="submit" name="' . $this->updateBtn . '" value="Delete member"/>
     </form>';
   }
   // For lists.
-  public function render(){  // fix here to get info to change member info.
+  public function render(){ 
     return '
     <hr>
     <form method="POST">

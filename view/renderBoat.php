@@ -2,23 +2,16 @@
 
 class RenderBoat{
 
-  private $ID;
   private $length;
   private $type;
   private $myType = "RenderBoat::type";
   private $myLength = "RenderBoat::length";
-  private $myID = "RenderBoat::ID";
   private $changeBtn = "RenderBoat::change";
   private $updateBtn = "RenderBoat::update";
 
-
-  
-
-
-  public function __construct($type, $length , $ID){
-    $this->ID = $ID;
-    $this->length = $length;
-    $this->type = $type;
+  public function __construct(boat $b) {
+    $this->length = $b->getBoatLength();
+    $this->type = $b->getBoatType();
   }
 
   // Update member form
@@ -31,15 +24,13 @@ class RenderBoat{
     <legend>type:
     <input name="' . $this->myType . '" value="' . $this->type . '"/>
       </legend>
-    <legend>member ID:
-      <input name="' . $this->myID . '" value="' . $this->ID . '" readonly/>
-    </legend>
-    <input type="submit" name="' . $this->update . '" value="Update boat"/>
-    <input type="submit" name="' . $this->update . '" value="Delete boat"/>
+
+    <input type="submit" name="' . $this->updateBtn . '" value="Update boat"/>
+    <input type="submit" name="' . $this->updateBtn . '" value="Delete boat"/>
     </form>';
   }
   // For lists.
-  public function render(){ // fix here to get info to change boat info.
+  public function render(){ 
     return '
     <hr>
     <form method="POST">
@@ -49,9 +40,7 @@ class RenderBoat{
     <legend>type:
     <input name="' . $this->myType . '" value="' . $this->type . '" readonly/>
       </legend>
-    <legend>member ID:
-      <input name="' . $this->myID . '" value="' . $this->ID . '" readonly/>
-    </legend>
+
     <input type="submit" name="' . $this->changeBtn . '" value="update"/>
     </form>';
   }
@@ -62,9 +51,7 @@ class RenderBoat{
     <p> ' . $amount . ' <p>
     ';
   }
-  public function getID() {
-    return $_POST[$this->myID];
-  }
+
   public function getType() {
     return $_POST[$this->myType];
   }
