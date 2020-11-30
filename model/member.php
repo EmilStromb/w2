@@ -5,6 +5,7 @@ class Member {
     private $name;
     private $personalNumber;
     private $memberID;
+    private $boats = Array();
 
     public function Set($name, $personalNumber, $memberID) {
         $this->name = $name;
@@ -14,6 +15,10 @@ class Member {
 
     public function getMemberName() {
         return $this->name;
+    }
+
+    public function addBoat(boat $boat) {
+        array_push($this->boats, $boat);
     }
 
     public function setMemberName($name) {
@@ -32,7 +37,11 @@ class Member {
         return $this->memberID;
     }
 
-    public function setMemberID($memeberID) {
+    public function setMemberID($memberID) {
         $this->memberID = $memberID;
+    }
+
+    public function getBoats() {
+        return $this->boats;
     }
 }

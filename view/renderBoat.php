@@ -6,6 +6,8 @@ class RenderBoat{
   private $type;
   private $myType = "RenderBoat::type";
   private $myLength = "RenderBoat::length";
+  private $myOldType = "RenderBoat::oldtype";
+  private $myOldLength = "RenderBoat::oldlength";
   private $changeBtn = "RenderBoat::change";
   private $updateBtn = "RenderBoat::update";
 
@@ -17,13 +19,17 @@ class RenderBoat{
   // Update member form
   public function show(){
     return '
+
     <form method="POST">
     <legend>length:
       <input name="' . $this->myLength . '" value="' . $this->length . '"/>
+      <input name="' . $this->myOldLength . '" value="' . $this->length . '"hidden/>
     </legend>
+    
     <legend>type:
     <input name="' . $this->myType . '" value="' . $this->type . '"/>
-      </legend>
+    <input name="' . $this->myOldType . '" value="' . $this->type . '"hidden/>
+    </legend>
 
     <input type="submit" name="' . $this->updateBtn . '" value="Update boat"/>
     <input type="submit" name="' . $this->updateBtn . '" value="Delete boat"/>
@@ -52,6 +58,12 @@ class RenderBoat{
     ';
   }
 
+  public function getOldType() {
+    return $_POST[$this->myOldType];
+  }
+  public function getOldLength() {
+    return $_POST[$this->myOldLength];
+  }
   public function getType() {
     return $_POST[$this->myType];
   }

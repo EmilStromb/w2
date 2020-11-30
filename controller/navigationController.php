@@ -5,11 +5,8 @@ require_once('model/boat.php');
 require_once('model/member.php');
 
 class NavController {
-
-    private $memberFile = "members.txt";
-    private $boatFile = "boats.txt";
     
-    public function showView(View $v,Member $m,AddMember $am,AddBoat $ab,Boat $b, emptyView $ev, VerboseController $vlc, CompactController $clc, RenderBoat $rb, RenderMember $rm, Persistance $p) {
+    public function showView(View $v,member $m, AddMember $am,AddBoat $ab,Boat $b, emptyView $ev, VerboseController $vlc, CompactController $clc, RenderBoat $rb, RenderMember $rm, Persistance $p) {
     // If addMember 'send' button is pressed.
     if ($am->getSendBtn()) {
     // check so there is content in inputs.
@@ -22,7 +19,7 @@ class NavController {
         }
         // If addboat 'send' button is pressed.
     } else if ($ab->getSendBtn()) {
-        $p->addBoat($b, $ab);
+        $p->addBoat($b, $ab, $m);
         $v->render($ev);
     } else {
     // Nav
@@ -39,7 +36,6 @@ class NavController {
             $b = new boat();
             $b->set($rb->getType(), $rb->getLength());
             $rb = new RenderBoat($b);
-            $p->removeFromFileBoat($this->boatFile ,$rb->getType(), $rb->getLength());
             $v->render($rb);
              // if change button is pressed!
 
@@ -53,14 +49,14 @@ class NavController {
         } else if ($rm->getUpdateSendBtn()) {
             if($rm->getUpdateBtnValue() == "Update member") {
                 $v->render($ev);
-                $p->removeFromFile($this->memberFile ,$rm->getID());
+                $oldMember = $p->removeFromFile($rm->getID());
                 $m = new member();
                 $m->set($rm->getName(), $rm->getPersonalNumber(), $rm->getID());
-                $p->updateMember($m);
+                $p->updateMember($m, $oldMember);
 
             } else {
                 $v->render($ev);
-                $p->removeFromFile($this->memberFile ,$rm->getID());
+                $p->removeFromFile($rm->getID());
                 echo "successfully deleted member!";
                 // delete member
             }
@@ -68,12 +64,16 @@ class NavController {
         } else if ($rb->getUpdateSendBtn()) {
             if($rb->getUpdateBtnValue() == "Update boat") {
                 $v->render($ev);
+                $member = $p->removeFromFileBoat($rb->getOldType(), $rb->getOldLength());
+                
                 $b = new boat();
+                echo $rb->getType() . $rb->getLength();
                 $b->set($rb->getType(), $rb->getLength());
-                $p->updateBoat($b);
+                $p->updateBoat($b, $member);
                 
             } else {
                 $v->render($ev);
+                $p->removeFromFileBoat($rb->getOldType(), $rb->getOldLength());
                 echo "successfully deleted boat!";
                 // delete boat
             }

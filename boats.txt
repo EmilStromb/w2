@@ -1,3 +1,0 @@
-Motorsailer,225
-Sailboat,47
-Motorsailer,120

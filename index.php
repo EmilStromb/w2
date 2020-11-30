@@ -23,9 +23,9 @@ $b = new Boat();
 $ev = new emptyView();
 $rb = new RenderBoat($b);
 $rm = new RenderMember($m);
+$p = new Persistance();
 $vlc = new VerboseController();
 $clc = new CompactController();
-$p = new Persistance();
 // Load in nav
 $nc = new NavController();
 
