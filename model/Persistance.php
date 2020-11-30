@@ -13,7 +13,11 @@ class Persistance {
         
         $count = 1;
         foreach (file('members.txt') as $line) {
-            $count++;
+            $member = unserialize($line);
+            if ($count <= $member->getMemberID()) {
+                $count = (int)$member->getMemberID();
+                $count++;
+            }
         }
         // Set the information in a new model.
         $m->setMemberName($name);
@@ -88,8 +92,8 @@ class Persistance {
     
     public function removeFromFile($ID) {
         $lineCount = 0;
-        foreach (file($this->memberFile) as $line) {
-            $member = unserialize($line);
+        foreach (file($this->memberFile) as $member) {
+            $member = unserialize($member);
             // Check so the ID of user matches
             if ($member->getMemberID() == $ID)  {
                 
@@ -102,8 +106,8 @@ class Persistance {
 
     public function removeFromFileBoat($type, $length) {
         $lineCount = 0;
-        foreach (file($this->memberFile) as $line) {
-            $member = unserialize($line);
+        foreach (file($this->memberFile) as $member) {
+            $member = unserialize($member);
             $boats = $member->getBoats()[0];
 
             if ($boats->getBoatType() == $type && $boats->getBoatLength() == $length)  {
